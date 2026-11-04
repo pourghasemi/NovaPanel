@@ -1,9 +1,21 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import './config/i18n';
+
+import App from './App';
+
+import ThemeProvider from './providers/ThemeProvider';
+import LanguageProvider from './providers/LanguageProvider';
+
+ReactDOM.createRoot(
+  document.getElementById('root')!,
+).render(
+  <React.StrictMode>
+    <ThemeProvider>
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
+    </ThemeProvider>
+  </React.StrictMode>,
+);

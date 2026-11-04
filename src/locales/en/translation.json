@@ -1,0 +1,35 @@
+{
+  "app": {
+    "name": "NOVA",
+    "description": "Admin Panel"
+  },
+  "common": {
+    "login": "Login",
+    "logout": "Logout",
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "success": "Operation completed successfully"
+  },
+  "login": {
+    "title": "Welcome Back",
+    "subtitle": "Enter your credentials to access the admin panel",
+    "username": "Username",
+    "password": "Password",
+    "usernamePlaceholder": "Enter your username",
+    "passwordPlaceholder": "Enter your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "submit": "Sign In",
+    "invalidCredentials": "Invalid username or password"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "products": "Products",
+    "orders": "Orders",
+    "settings": "Settings"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "app": {
+    "name": "NOVA",
+    "description": "پنل مدیریت"
+  },
+  "common": {
+    "login": "ورود",
+    "logout": "خروج",
+    "save": "ذخیره",
+    "cancel": "انصراف",
+    "search": "جستجو",
+    "loading": "در حال بارگذاری...",
+    "error": "خطایی رخ داده است",
+    "success": "عملیات با موفقیت انجام شد"
+  },
+  "login": {
+    "title": "خوش آمدید",
+    "subtitle": "برای ورود به پنل مدیریت اطلاعات خود را وارد کنید",
+    "username": "نام کاربری",
+    "password": "رمز عبور",
+    "usernamePlaceholder": "نام کاربری خود را وارد کنید",
+    "passwordPlaceholder": "رمز عبور خود را وارد کنید",
+    "rememberMe": "مرا به خاطر بسپار",
+    "forgotPassword": "رمز عبور را فراموش کرده‌اید؟",
+    "submit": "ورود به پنل",
+    "invalidCredentials": "نام کاربری یا رمز عبور اشتباه است"
+  },
+  "navigation": {
+    "dashboard": "داشبورد",
+    "users": "کاربران",
+    "products": "محصولات",
+    "orders": "سفارش‌ها",
+    "settings": "تنظیمات"
+  }
+}
