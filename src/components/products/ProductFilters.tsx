@@ -28,7 +28,7 @@ const ProductFilters = ({
     <FiltersContainer>
       <SearchInput
         type="search"
-        placeholder={t('products.searchPlaceholder')}
+        placeholder={t('products.search')}
         value={search}
         onChange={(event) => onSearchChange(event.target.value)}
       />

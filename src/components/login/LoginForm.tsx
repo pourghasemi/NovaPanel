@@ -87,7 +87,7 @@ const LoginForm = () => {
                 id="username"
                 name="username"
                 type="text"
-                placeholder={t('login.usernamePlaceholder')}
+                placeholder={t('login.username')}
                 autoComplete="username"
               />
 

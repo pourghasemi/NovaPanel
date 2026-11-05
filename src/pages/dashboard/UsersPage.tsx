@@ -97,7 +97,7 @@ const UsersPage = () => {
       <PageContent>
         <Toolbar>
           <SearchInput
-            placeholder={t('users.searchPlaceholder')}
+            placeholder={t('users.search')}
             value={search}
             onChange={setSearch}
           />
