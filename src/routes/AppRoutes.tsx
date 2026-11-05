@@ -10,7 +10,7 @@ import ProtectedRoute from '@/routes/ProtectedRoute';
 
 const AppRoutes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
 
