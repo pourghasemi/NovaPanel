@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
-import type { Product } from '@/types/product';
+import type { Product } from '@/type/product';
 import type { DataTableColumn } from '@/share/DataTable';
 
 const ProductImage = styled.img`

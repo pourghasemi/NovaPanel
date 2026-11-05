@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
-import type { User } from '@/types/user';
+import type { User } from '@/type/user';
 import type { DataTableColumn } from '@/components/share/DataTable';
 
 const UserName = styled.span`

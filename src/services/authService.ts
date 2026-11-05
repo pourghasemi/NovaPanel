@@ -3,7 +3,7 @@ import api from '@/services/api';
 import type {
   LoginRequest,
   LoginResponse,
-} from '@/types/auth';
+} from '@/type/auth';
 
 export const login = async (
   credentials: LoginRequest,

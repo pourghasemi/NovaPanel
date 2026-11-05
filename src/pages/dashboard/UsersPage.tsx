@@ -18,7 +18,7 @@ import {
 
 import { handleApiError } from '@/services/handleApiError';
 
-import type { User } from '@/types/user';
+import type { User } from '@/type/user';
 
 import {
   PageContent,

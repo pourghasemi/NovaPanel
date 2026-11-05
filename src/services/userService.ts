@@ -1,5 +1,5 @@
 import api from '@/services/api';
-import type { User } from '@/types/user';
+import type { User } from '@/type/user';
 
 export type CreateUserPayload = {
   email: string;

@@ -18,7 +18,7 @@ import {
 import { handleApiError } from '@/services/handleApiError';
 
 import type { CreateProductPayload } from '@/services/productService';
-import type { Product } from '@/types/product';
+import type { Product } from '@/type/product';
 
 import {
   PageContent,
