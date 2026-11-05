@@ -7,6 +7,7 @@
     "login": "Login",
     "logout": "Logout",
     "save": "Save",
+    "saving": "Saving...",
     "cancel": "Cancel",
     "search": "Search",
     "loading": "Loading...",
@@ -18,12 +19,10 @@
     "subtitle": "Enter your credentials to access the admin panel",
     "username": "Username",
     "password": "Password",
-    "usernamePlaceholder": "Enter your username",
-    "passwordPlaceholder": "Enter your password",
-    "rememberMe": "Remember me",
-    "forgotPassword": "Forgot password?",
     "submit": "Sign In",
-    "invalidCredentials": "Invalid username or password"
+    "invalidCredentials": "Invalid username or password",
+    "usernameRequired": "Username is required",
+    "passwordRequired": "Password is required"
   },
   "navigation": {
     "dashboard": "Dashboard",
@@ -31,5 +30,105 @@
     "products": "Products",
     "orders": "Orders",
     "settings": "Settings"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome! Here is an overview of your store.",
+    "menu": "Main Menu",
+    "overview": "Overview",
+    "recentOrders": "Recent Orders",
+    "viewAll": "View All",
+    "orderId": "Order ID",
+    "customer": "Customer",
+    "date": "Date",
+    "amount": "Amount",
+    "status": "Status",
+    "stats": {
+      "users": "Total Users",
+      "products": "Total Products",
+      "orders": "Total Orders",
+      "revenue": "Total Revenue"
+    },
+    "orderStatus": {
+      "completed": "Completed",
+      "pending": "Pending",
+      "cancelled": "Cancelled"
+    }
+  },
+  "users": {
+    "title": "User Management",
+    "description": "View and manage users",
+    "searchPlaceholder": "Search by name or email...",
+    "addUser": "Add User",
+    "user": "User",
+    "username": "Username",
+    "email": "Email",
+    "phone": "Phone",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "password": "Password",
+    "noUsersFound": "No users found",
+    "createSuccess": "User created successfully",
+    "createError": "Failed to create user",
+    "validation":{
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "emailRequired": "Email is required",
+      "invalidEmail": "Please enter a valid email",
+      "usernameRequired": "Username is required",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least {{count}} characters",
+      "phoneRequired": "Phone number is required",
+      "invalidPhone": "Please enter a valid phone number"
+    }
+  },
+  "products": {
+    "title": "Product Management",
+    "description": "View and manage store products",
+    "searchPlaceholder": "Search products...",
+    "filterByCategory": "Filter by category",
+    "allCategories": "All categories",
+    "addProduct": "Add Product",
+    "product": "Product",
+    "productName": "Product name",
+    "imageUrl": "Image url",
+    "selectCategory": "Select category",
+    "category": "Category",
+    "price": "Price",
+    "stock": "Stock",
+    "status": "Status",
+    "rating": "Rating",
+    "image":"Image",
+    "actions": "Actions",
+    "available": "Available",
+    "outOfStock": "Out of stock",
+    "edit": "Edit",
+    "delete": "Delete",
+    "noProductsFound": "No products found",
+    "categories": {
+      "electronics": "Electronics",
+      "clothing": "Clothing",
+      "jewelery": "Jewelery"
+    },
+    "createSuccess": "Product created successfully",
+    "createError": "Failed to create product",
+    "validation": {
+      "productNameRequired": "Product name is required",
+      "priceMustBeNumber": "Price must be a number",
+      "priceRequired": "Price is required",
+      "priceMustBePositive": "Price must be greater than zero",
+      "descriptionRequired": "Description is required",
+      "categoryRequired": "Please select a category",
+      "imageRequired": "Image URL is required",
+      "invalidUrl": "Please enter a valid URL",
+      "minCharacters": "Must be at least {{count}} characters"
+    }
+  },
+  "table": {
+    "empty": "No data available",
+    "rowsPerPage": "Rows per page:",
+    "showing": "{{from}}–{{to}} of {{total}} items",
+    "previous": "Previous page",
+    "next": "Next page"
   }
 }

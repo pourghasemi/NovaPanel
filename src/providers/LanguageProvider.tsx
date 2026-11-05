@@ -41,7 +41,10 @@ const LanguageProvider = ({ children }: LanguageProviderProps) => {
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dir = direction;
-
+    document.body.style.fontFamily =
+      language === 'fa'
+        ? "'Vazirmatn', sans-serif"
+        : "'Inter', sans-serif";
     localStorage.setItem('language', language);
   }, [language, direction]);
 

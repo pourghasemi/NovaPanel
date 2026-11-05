@@ -7,23 +7,26 @@
     "login": "ورود",
     "logout": "خروج",
     "save": "ذخیره",
+    "saving": "در حال ذخیره...",
     "cancel": "انصراف",
     "search": "جستجو",
     "loading": "در حال بارگذاری...",
     "error": "خطایی رخ داده است",
-    "success": "عملیات با موفقیت انجام شد"
+    "success": "عملیات با موفقیت انجام شد",
+    "table": {
+      "next":"صفحه بعد",
+      "previous":"صفحه قبل"
+    }
   },
   "login": {
     "title": "خوش آمدید",
     "subtitle": "برای ورود به پنل مدیریت اطلاعات خود را وارد کنید",
     "username": "نام کاربری",
     "password": "رمز عبور",
-    "usernamePlaceholder": "نام کاربری خود را وارد کنید",
-    "passwordPlaceholder": "رمز عبور خود را وارد کنید",
-    "rememberMe": "مرا به خاطر بسپار",
-    "forgotPassword": "رمز عبور را فراموش کرده‌اید؟",
     "submit": "ورود به پنل",
-    "invalidCredentials": "نام کاربری یا رمز عبور اشتباه است"
+    "invalidCredentials": "نام کاربری یا رمز عبور اشتباه است",
+    "usernameRequired": "وارد کردن نام کاربری الزامی است",
+    "passwordRequired": "وارد کردن رمز عبور الزامی است"
   },
   "navigation": {
     "dashboard": "داشبورد",
@@ -31,5 +34,105 @@
     "products": "محصولات",
     "orders": "سفارش‌ها",
     "settings": "تنظیمات"
+  },
+  "dashboard": {
+    "title": "داشبورد",
+    "welcome": "خوش آمدید! وضعیت کلی فروشگاه شما در یک نگاه.",
+    "menu": "منوی اصلی",
+    "overview": "آمار کلی",
+    "recentOrders": "آخرین سفارش‌ها",
+    "viewAll": "مشاهده همه",
+    "orderId": "شماره سفارش",
+    "customer": "مشتری",
+    "date": "تاریخ",
+    "amount": "مبلغ",
+    "status": "وضعیت",
+    "stats": {
+      "users": "تعداد کاربران",
+      "products": "تعداد محصولات",
+      "orders": "تعداد سفارش‌ها",
+      "revenue": "مجموع درآمد"
+    },
+    "orderStatus": {
+      "completed": "تکمیل شده",
+      "pending": "در انتظار",
+      "cancelled": "لغو شده"
+    }
+  },
+  "users": {
+    "title": "مدیریت کاربران",
+    "description": "مشاهده و مدیریت کاربران پنل",
+    "searchPlaceholder": "جست‌وجوی نام یا ایمیل...",
+    "addUser": "افزودن کاربر",
+    "user": "کاربر",
+    "username": "نام کاربری",
+    "email": "ایمیل",
+    "phone": "شماره تلفن",
+    "firstName": "نام",
+    "lastName": "نام خانوادگی",
+    "password": "رمز عبور",
+    "noUsersFound": "کاربری پیدا نشد",
+    "createSuccess": "کاربر با موفقیت اضافه شد",
+    "createError": "خطا در ثبت کاربر",
+    "validation":{
+      "firstNameRequired": "نام الزامی است",
+      "lastNameRequired": "نام خانوادگی الزامی است",
+      "emailRequired": "ایمیل الزامی است",
+      "invalidEmail": "ایمیل معتبر نیست",
+      "usernameRequired": "نام کاربری الزامی است",
+      "passwordRequired": "رمز عبور الزامی است",
+      "passwordMinLength": "رمز عبور باید حداقل {{count}} کاراکتر باشد",
+      "phoneRequired": "شماره تلفن الزامی است",
+      "invalidPhone": "شماره تلفن معتبر نیست"
+    } 
+  },
+  "products": {
+    "title": "مدیریت محصولات",
+    "description": "مشاهده و مدیریت محصولات فروشگاه",
+    "searchPlaceholder": "جست‌وجوی محصول...",
+    "filterByCategory": "فیلتر بر اساس دسته‌بندی",
+    "allCategories": "همه دسته‌بندی‌ها",
+    "addProduct": "افزودن محصول",
+    "product": "محصول",
+    "productName": "نام محصول",
+    "imageUrl": "آدرس عکس",
+    "selectCategory": " دسته بندی را انتخاب کنید",
+    "category": "دسته‌بندی",
+    "price": "قیمت",
+    "stock": "موجودی",
+    "status": "وضعیت",
+    "rating":"امتیاز",
+    "image": "عکس",
+    "actions": "عملیات",
+    "available": "موجود",
+    "outOfStock": "ناموجود",
+    "edit": "ویرایش",
+    "delete": "حذف",
+    "noProductsFound": "محصولی پیدا نشد",
+    "categories": {
+      "electronics": "الکترونیک",
+      "clothing": "پوشاک",
+      "jewelery": "زیورآلات"
+    },
+    "createSuccess": "محصول با موفقیت اضافه شد",
+    "createError": "خطا در ثبت محصول",
+    "validation": {
+      "productNameRequired": "نام محصول الزامی است",
+      "priceMustBeNumber": "قیمت باید عدد باشد",
+      "priceRequired": "قیمت الزامی است",
+      "priceMustBePositive": "قیمت باید بیشتر از صفر باشد",
+      "descriptionRequired": "توضیحات محصول الزامی است",
+      "categoryRequired": "انتخاب دسته‌بندی الزامی است",
+      "imageRequired": "آدرس تصویر الزامی است",
+      "invalidUrl": "آدرس وارد شده معتبر نیست",
+      "minCharacters": "باید حداقل {{count}} کاراکتر باشد"
+    }
+  },
+  "table": {
+    "empty": "اطلاعاتی برای نمایش وجود ندارد",
+    "rowsPerPage": "تعداد ردیف:",
+    "showing": "{{from}} تا {{to}} از {{total}} مورد",
+    "previous": "صفحه قبل",
+    "next": "صفحه بعد"
   }
 }

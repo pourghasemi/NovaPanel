@@ -1,3 +1,4 @@
+
 import type { DefaultTheme } from 'styled-components';
 
 export type ThemeMode = 'light' | 'dark';
@@ -5,6 +6,11 @@ export type ThemeMode = 'light' | 'dark';
 export const themes: Record<ThemeMode, DefaultTheme> = {
   light: {
     mode: 'light',
+
+    fontFamily: {
+      fa: "'Vazirmatn', sans-serif",
+      en: "'Inter', sans-serif",
+    },
 
     colors: {
       primary: '#3157A4',
@@ -38,6 +44,11 @@ export const themes: Record<ThemeMode, DefaultTheme> = {
 
   dark: {
     mode: 'dark',
+
+    fontFamily: {
+      fa: "'Vazirmatn', sans-serif",
+      en: "'Inter', sans-serif",
+    },
 
     colors: {
       primary: '#6D91D8',
