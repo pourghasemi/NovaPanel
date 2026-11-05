@@ -4,6 +4,11 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     mode: 'light' | 'dark';
 
+    fontFamily: {
+      fa: string;
+      en: string;
+    };
+
     colors: {
       primary: string;
       secondary: string;
