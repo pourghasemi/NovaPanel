@@ -1,32 +1,85 @@
-# React + TypeScript + Vite
+# NOVA Admin Panel
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A responsive admin panel built with React and TypeScript, featuring product and user management, authentication, form validation, and multi-language support.
 
-Currently, two official plugins are available:
+## Repository
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[GitHub Repository](https://github.com/pourghasemi/NovaPanel)
 
-## React Compiler
+## Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+[View Live Demo](https://pourghasemi.github.io/NovaPanel/)
 
-## Expanding the Oxlint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Make sure you have the following installed:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+- [Node.js](https://nodejs.org/) (LTS version)
+- npm
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/pourghasemi/NovaPanel.git
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Navigate to the project directory:
+
+```bash
+cd NovaPanel
+```
+
+Install dependencies:
+
+```bash
+npm ci
+```
+
+## Environment Variables
+
+Create a `.env.local` file in the project root and add:
+
+```env
+VITE_API_BASE_URL=https://fakestoreapi.com
+```
+
+## Development
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Production Build
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+## Preview
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Tech Stack
+
+- **React** – UI library
+- **TypeScript** – Type safety
+- **Vite** – Build tool and development server
+- **React Router** – Client-side routing
+- **Styled Components** – Component-based styling
+- **Formik** – Form state management
+- **Yup** – Form validation
+- **i18next** – Internationalization
+- **React Icons** – Icon library
+- **Fake Store API** – Product and user data
