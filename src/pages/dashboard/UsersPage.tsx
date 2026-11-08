@@ -50,7 +50,7 @@ const UsersPage = () => {
 
         setUsers(data);
       } catch (error) {
-        setError(handleApiError(error));
+        setError(handleApiError(error, t));
       } finally {
         setLoading(false);
       }
@@ -97,7 +97,7 @@ const UsersPage = () => {
       <PageContent>
         <Toolbar>
           <SearchInput
-            placeholder={t('users.search')}
+            placeholder={t('users.searchPlaceholder')}
             value={search}
             onChange={setSearch}
           />

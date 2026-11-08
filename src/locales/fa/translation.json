@@ -13,10 +13,8 @@
     "loading": "در حال بارگذاری...",
     "error": "خطایی رخ داده است",
     "success": "عملیات با موفقیت انجام شد",
-    "table": {
-      "next":"صفحه بعد",
-      "previous":"صفحه قبل"
-    }
+    "darkMode": "حالت تاریک",
+    "lightMode": "حالت روشن"
   },
   "login": {
     "title": "خوش آمدید",
@@ -26,7 +24,10 @@
     "submit": "ورود به پنل",
     "invalidCredentials": "نام کاربری یا رمز عبور اشتباه است",
     "usernameRequired": "وارد کردن نام کاربری الزامی است",
-    "passwordRequired": "وارد کردن رمز عبور الزامی است"
+    "passwordRequired": "وارد کردن رمز عبور الزامی است",
+    "loginFailed": "ورود ناموفق بود",
+    "serverError": "خطایی در سرور رخ داده است",
+    "networkError": "ارتباط با سرور برقرار نشد"
   },
   "navigation": {
     "dashboard": "داشبورد",
@@ -134,5 +135,10 @@
     "showing": "{{from}} تا {{to}} از {{total}} مورد",
     "previous": "صفحه قبل",
     "next": "صفحه بعد"
+  },
+  "errors": {
+    "networkError": "ارتباط با سرور برقرار نشد",
+    "serverError": "خطایی در سرور رخ داده است",
+    "unexpectedError": "خطای غیرمنتظره‌ای رخ داده است"
   }
 }

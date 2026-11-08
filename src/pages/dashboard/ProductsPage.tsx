@@ -56,7 +56,7 @@ const ProductsPage = () => {
         setProducts(productsData);
         setCategories(categoriesData);
       } catch (error) {
-        setError(handleApiError(error));
+        setError(handleApiError(error, t));
       } finally {
         setLoading(false);
       }

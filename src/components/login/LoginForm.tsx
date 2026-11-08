@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
@@ -54,15 +55,31 @@ const LoginForm = () => {
       const response = await login(values);
 
       if (!response.token) {
-        throw new Error('Login failed');
+        throw new Error(t('login.loginFailed'));
       }
 
       loginUser();
       navigate('/users');
-    } catch {
-      setApiError(t('login.invalidCredentials'));
+    } catch(error) {
+      if (axios.isAxiosError(error)) {
+        if (!error.response) {
+          // Network error, timeout or connection failure
+          setApiError(t('login.networkError'));
+          return;
+        }
+
+        if (error.response.status === 401) {
+          setApiError(t('login.invalidCredentials'));
+          return;
+        }
+
+        setApiError(t('login.serverError'));
+        return;
+      }
+    
     }
   };
+  
 
   return (
     <FormContainer>

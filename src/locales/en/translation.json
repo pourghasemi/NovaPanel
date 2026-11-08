@@ -12,7 +12,9 @@
     "search": "Search",
     "loading": "Loading...",
     "error": "Something went wrong",
-    "success": "Operation completed successfully"
+    "success": "Operation completed successfully",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
   },
   "login": {
     "title": "Welcome Back",
@@ -22,7 +24,10 @@
     "submit": "Sign In",
     "invalidCredentials": "Invalid username or password",
     "usernameRequired": "Username is required",
-    "passwordRequired": "Password is required"
+    "passwordRequired": "Password is required",
+    "loginFailed": "Login failed",
+    "serverError": "Something went wrong on the server",
+    "networkError": "Unable to connect to the server"
   },
   "navigation": {
     "dashboard": "Dashboard",
@@ -130,5 +135,10 @@
     "showing": "{{from}}–{{to}} of {{total}} items",
     "previous": "Previous page",
     "next": "Next page"
+  },
+  "errors": {
+    "networkError": "ارتباط با سرور برقرار نشد",
+    "somethingWentWrong": "مشکلی رخ داده است",
+    "unexpectedError": "خطای غیرمنتظره‌ای رخ داده است"
   }
 }

@@ -56,7 +56,7 @@ const ProductForm = ({
 
       toast.success(t('products.createSuccess'));
     } catch (error) {
-      toast.error(handleApiError(error));
+      toast.error(handleApiError(error, t));
     }
   };
 

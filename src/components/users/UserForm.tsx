@@ -59,7 +59,7 @@ const UserForm = ({ onSubmit, onCancel }: UserFormProps) => {
 
       toast.success(t('users.createSuccess'));
     } catch (error) {
-      toast.error(handleApiError(error));
+      toast.error(handleApiError(error, t));
     }
   };
 

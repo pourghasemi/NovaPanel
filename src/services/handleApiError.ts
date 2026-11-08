@@ -1,15 +1,18 @@
 import axios from 'axios';
 
-export const handleApiError = (error: unknown): string => {
+export const handleApiError = (
+  error: unknown,
+  t: (key: string) => string,
+): string => {
   if (axios.isAxiosError(error)) {
     if (error.response) {
-      return error.response.data?.message || 'Something went wrong';
+      return error.response.data?.message || t('somethingWentWrong');
     }
 
     if (error.request) {
-      return 'Unable to connect to the server';
+      return t('errors.networkError');
     }
   }
 
-  return 'An unexpected error occurred';
+  return t('errors.unexpectedError');
 };
