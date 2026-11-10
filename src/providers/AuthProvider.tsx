@@ -2,13 +2,15 @@
 import {
   createContext,
   useContext,
-  useState,
+  useEffect,
   type ReactNode,
 } from 'react';
 
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { logoutUser } from '@/store/slices/authSlice';
+
 interface AuthContextType {
   isAuthenticated: boolean;
-  loginUser: () => void;
   logout: () => void;
 }
 
@@ -29,24 +31,30 @@ export const useAuth = () => {
 };
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    () => sessionStorage.getItem('isAuthenticated') === 'true',
+  const isAuthenticated = useAppSelector(
+    (state) => state.auth.isAuthenticated,
   );
 
-  const loginUser = () => {
-    sessionStorage.setItem('isAuthenticated', 'true');
-    setIsAuthenticated(true);
-  };
+  const dispatch = useAppDispatch();
 
   const logout = () => {
-    sessionStorage.removeItem('isAuthenticated');
-    setIsAuthenticated(false);
+    dispatch(logoutUser());
   };
 
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      dispatch(logoutUser());
+    };
+
+    window.addEventListener('auth:logout', handleUnauthorized);
+
+    return () => {
+      window.removeEventListener('auth:logout', handleUnauthorized);
+    };
+  }, [dispatch]);
+
   return (
-    <AuthContext.Provider
-      value={{ isAuthenticated, loginUser, logout }}
-    >
+    <AuthContext.Provider value={{ isAuthenticated, logout }}>
       {children}
     </AuthContext.Provider>
   );

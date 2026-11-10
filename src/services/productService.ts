@@ -1,5 +1,5 @@
 import api from '@/services/api';
-import type { Product } from '@/type/product';
+import type { Product } from '@/types/product';
 
 export type CreateProductPayload = Pick<
   Product,

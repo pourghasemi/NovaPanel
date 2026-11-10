@@ -2,13 +2,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 
-import { login } from '@/services/authService';
-import { useAuth } from '@/providers/AuthProvider';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { loginUser } from '@/store/slices/authSlice';
 
 import {
   FormContainer,
@@ -21,7 +20,7 @@ import {
   PasswordToggle,
   ErrorText,
   ApiError,
-  SubmitButton
+  SubmitButton,
 } from './LoginForm.styles';
 
 interface LoginFormValues {
@@ -29,14 +28,14 @@ interface LoginFormValues {
   password: string;
 }
 
-
 const LoginForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { loginUser } = useAuth();
+
+  const dispatch = useAppDispatch();
+  const { loading, error } = useAppSelector((state) => state.auth);
 
   const [showPassword, setShowPassword] = useState(false);
-  const [apiError, setApiError] = useState('');
 
   const initialValues: LoginFormValues = {
     username: '',
@@ -49,37 +48,13 @@ const LoginForm = () => {
   });
 
   const handleSubmit = async (values: LoginFormValues) => {
-    setApiError('');
-
     try {
-      const response = await login(values);
-
-      if (!response.token) {
-        throw new Error(t('login.loginFailed'));
-      }
-
-      loginUser();
-      navigate('/users');
-    } catch(error) {
-      if (axios.isAxiosError(error)) {
-        if (!error.response) {
-          // Network error, timeout or connection failure
-          setApiError(t('login.networkError'));
-          return;
-        }
-
-        if (error.response.status === 401) {
-          setApiError(t('login.invalidCredentials'));
-          return;
-        }
-
-        setApiError(t('login.serverError'));
-        return;
-      }
-    
+      await dispatch(loginUser(values)).unwrap();
+      navigate('/dashboard');
+    } catch {
+      // Error is stored in Redux
     }
   };
-  
 
   return (
     <FormContainer>
@@ -93,67 +68,61 @@ const LoginForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
-          <Form>
-            <FormGroup>
-              <label htmlFor="username">
-                {t('login.username')}
-              </label>
+        <Form>
+          <FormGroup>
+            <label htmlFor="username">
+              {t('login.username')}
+            </label>
 
+            <StyledField
+              id="username"
+              name="username"
+              type="text"
+              placeholder={t('login.username')}
+              autoComplete="username"
+            />
+
+            <ErrorMessage name="username">
+              {(message) => <ErrorText>{t(message)}</ErrorText>}
+            </ErrorMessage>
+          </FormGroup>
+
+          <FormGroup>
+            <label htmlFor="password">
+              {t('login.password')}
+            </label>
+
+            <PasswordWrapper>
               <StyledField
-                id="username"
-                name="username"
-                type="text"
-                placeholder={t('login.username')}
-                autoComplete="username"
+                id="password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder={t('login.password')}
+                autoComplete="current-password"
               />
 
-              <ErrorMessage name="username">
-                {(message) => (
-                  <ErrorText>{t(message)}</ErrorText>
-                )}
-              </ErrorMessage>
-            </FormGroup>
+              <PasswordToggle
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                aria-label={
+                  showPassword ? 'Hide password' : 'Show password'
+                }
+              >
+                {showPassword ? <FiEyeOff /> : <FiEye />}
+              </PasswordToggle>
+            </PasswordWrapper>
 
-            <FormGroup>
-              <label htmlFor="password">
-                {t('login.password')}
-              </label>
+            <ErrorMessage name="password">
+              {(message) => <ErrorText>{t(message)}</ErrorText>}
+            </ErrorMessage>
+          </FormGroup>
 
-              <PasswordWrapper>
-                <StyledField
-                  id="password"
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder={t('login.password')}
-                  autoComplete="current-password"
-                />
+          {error && <ApiError>{t(error)}</ApiError>}
 
-                <PasswordToggle
-                  type="button"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  aria-label={
-                    showPassword ? 'Hide password' : 'Show password'
-                  }
-                >
-                  {showPassword ? <FiEyeOff /> : <FiEye />}
-                </PasswordToggle>
-              </PasswordWrapper>
-
-              <ErrorMessage name="password">
-                {(message) => (
-                  <ErrorText>{t(message)}</ErrorText>
-                )}
-              </ErrorMessage>
-            </FormGroup>
-
-            {apiError && <ApiError>{apiError}</ApiError>}
-
-            <SubmitButton type="submit" disabled={isSubmitting}>
-              {isSubmitting ? t('common.loading') : t('login.submit')}
-            </SubmitButton>
-          </Form>
-        )}
+          <SubmitButton type="submit" disabled={loading}>
+            {loading ? t('common.loading') : t('login.submit')}
+          </SubmitButton>
+        </Form>
       </Formik>
     </FormContainer>
   );

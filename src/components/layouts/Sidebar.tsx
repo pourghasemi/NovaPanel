@@ -2,6 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
+  FiGrid,
   FiUsers,
   FiPackage,
   FiLogOut,
@@ -36,6 +37,11 @@ const Sidebar = () => {
       <MenuTitle>{t('dashboard.menu')}</MenuTitle>
 
       <Menu>
+        <MenuLink to="/dashboard">
+          <FiGrid />
+          <span>{t('navigation.dashboard')}</span>
+        </MenuLink>
+
         <MenuLink to="/users">
           <FiUsers />
           <span>{t('navigation.users')}</span>

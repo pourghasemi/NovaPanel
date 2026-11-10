@@ -4,21 +4,22 @@ import { useTranslation } from 'react-i18next';
 import { FiPlus } from 'react-icons/fi';
 
 import PanelLayout from '@/components/layouts/PanelLayout';
-import DataTable from '@/share/DataTable';
+import DataTable from '@/shared/DataTable';
 import ProductForm from '@/components/products/ProductForm';
 import ProductFilters from '@/components/products/ProductFilters';
+
 import useProductColumns from '@/hooks/useProductColumns';
 
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import {
-  getProducts,
+  fetchProducts,
+  addProduct,
+} from '@/store/slices/productsSlice';
+
+import {
   getProductCategories,
-  createProduct,
+  type CreateProductPayload,
 } from '@/services/productService';
-
-import { handleApiError } from '@/services/handleApiError';
-
-import type { CreateProductPayload } from '@/services/productService';
-import type { Product } from '@/type/product';
 
 import {
   PageContent,
@@ -30,40 +31,26 @@ import {
 const ProductsPage = () => {
   const { t } = useTranslation();
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
+  const dispatch = useAppDispatch();
 
+  const { products, loading, error } = useAppSelector(
+    (state) => state.products
+  );
+
+  const [categories, setCategories] = useState<string[]>([]);
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
-
   const [showForm, setShowForm] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
   const columns = useProductColumns();
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        setError('');
+    dispatch(fetchProducts());
 
-        const [productsData, categoriesData] = await Promise.all([
-          getProducts(),
-          getProductCategories(),
-        ]);
-
-        setProducts(productsData);
-        setCategories(categoriesData);
-      } catch (error) {
-        setError(handleApiError(error, t));
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
+    getProductCategories()
+      .then(setCategories)
+      .catch((error) => console.error(error));
+  }, [dispatch]);
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
@@ -79,10 +66,12 @@ const ProductsPage = () => {
   }, [products, search, selectedCategory]);
 
   const handleAddProduct = async (product: CreateProductPayload) => {
-    const newProduct = await createProduct(product);
-
-    setProducts((prev) => [newProduct, ...prev]);
-    setShowForm(false);
+    try {
+      await dispatch(addProduct(product)).unwrap();
+      setShowForm(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -120,7 +109,7 @@ const ProductsPage = () => {
         {loading ? (
           <Message>{t('common.loading')}</Message>
         ) : error ? (
-          <Message>{error}</Message>
+          <Message>{t(error)}</Message>
         ) : (
           <DataTable
             columns={columns}

@@ -4,21 +4,19 @@ import { useTranslation } from 'react-i18next';
 import { FiPlus } from 'react-icons/fi';
 
 import PanelLayout from '@/components/layouts/PanelLayout';
-import DataTable from '@/share/DataTable';
-import SearchInput from '@/share/SearchInput';
+import DataTable from '@/shared/DataTable';
+import SearchInput from '@/shared/SearchInput';
 import UserForm from '@/components/users/UserForm';
 
 import useUserColumns from '@/hooks/useUserColumns';
 
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import {
-  getUsers,
-  createUser,
-  type CreateUserPayload,
-} from '@/services/userService';
+  fetchUsers,
+  addUser,
+} from '@/store/slices/usersSlice';
 
-import { handleApiError } from '@/services/handleApiError';
-
-import type { User } from '@/type/user';
+import type { CreateUserPayload } from '@/services/userService';
 
 import {
   PageContent,
@@ -30,34 +28,20 @@ import {
 const UsersPage = () => {
   const { t } = useTranslation();
 
-  const [users, setUsers] = useState<User[]>([]);
+  const dispatch = useAppDispatch();
+
+  const { users, loading, error } = useAppSelector(
+    (state) => state.users
+  );
+
   const [search, setSearch] = useState('');
-
   const [showForm, setShowForm] = useState(false);
-
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
   const columns = useUserColumns();
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        setLoading(true);
-        setError('');
-
-        const data = await getUsers();
-
-        setUsers(data);
-      } catch (error) {
-        setError(handleApiError(error, t));
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUsers();
-  }, []);
+    dispatch(fetchUsers());
+  }, [dispatch]);
 
   const filteredUsers = useMemo(() => {
     const searchValue = search.toLowerCase().trim();
@@ -77,15 +61,7 @@ const UsersPage = () => {
   }, [users, search]);
 
   const handleAddUser = async (user: CreateUserPayload) => {
-    const newUser = await createUser(user);
-
-    const completeUser: User = {
-      ...newUser,
-      ...user,
-      id: newUser.id,
-    };
-
-    setUsers((prev) => [completeUser, ...prev]);
+    await dispatch(addUser(user)).unwrap();
     setShowForm(false);
   };
 
@@ -121,7 +97,7 @@ const UsersPage = () => {
         {loading ? (
           <Message>{t('common.loading')}</Message>
         ) : error ? (
-          <Message>{error}</Message>
+          <Message>{t(error)}</Message>
         ) : (
           <DataTable
             columns={columns}
