@@ -139,6 +139,11 @@
   "errors": {
     "networkError": "ارتباط با سرور برقرار نشد",
     "serverError": "خطایی در سرور رخ داده است",
-    "unexpectedError": "خطای غیرمنتظره‌ای رخ داده است"
+    "unexpectedError": "خطای غیرمنتظره‌ای رخ داده است",
+    "fetchUsersFailed": "دریافت لیست کاربران با مشکل مواجه شد",
+    "createUserFailed": "ساخت کاربر با مشکل مواجه شد",
+    "fetchProductsFailed": "دریافت لیست محصولات با مشکل مواجه شد",
+    "createProductFailed": "ساخت محصول با مشکل مواجه شد",
+    "loginFailed": "ورود ناموفق بود"
   }
 }

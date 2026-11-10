@@ -6,11 +6,11 @@ import toast from 'react-hot-toast';
 import type { CreateProductPayload } from '@/services/productService';
 import { handleApiError } from '@/services/handleApiError';
 
-import FormInput from '@/share/FormInput';
-import FormSelect from '@/share/FormSelect';
-import FormTextarea from '@/share/FormTextarea';
+import FormInput from '@/shared/FormInput';
+import FormSelect from '@/shared/FormSelect';
+import FormTextarea from '@/shared/FormTextarea';
 
-import { getProductValidationSchema } from './ProductForm.validation';
+import { getProductValidationSchema } from '@/validations/ProductForm.validation';
 import {
   FormContainer,
   FormActions,

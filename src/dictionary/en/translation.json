@@ -137,8 +137,13 @@
     "next": "Next page"
   },
   "errors": {
-    "networkError": "ارتباط با سرور برقرار نشد",
-    "somethingWentWrong": "مشکلی رخ داده است",
-    "unexpectedError": "خطای غیرمنتظره‌ای رخ داده است"
+    "networkError": "Unable to connect to the server",
+    "serverError": "A server error occurred",
+    "unexpectedError": "An unexpected error occurred",
+    "fetchUsersFailed": "Failed to fetch users",
+    "createUserFailed": "Failed to create user",
+    "fetchProductsFailed": "Failed to fetch products",
+    "createProductFailed": "Failed to create product",
+    "loginFailed": "Login failed"
   }
 }

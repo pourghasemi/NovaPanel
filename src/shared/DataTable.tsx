@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Pagination from '@/share/Pagination';
+import Pagination from '@/shared/Pagination';
 
 import {
   TableWrapper,

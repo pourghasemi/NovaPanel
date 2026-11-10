@@ -6,9 +6,9 @@ import toast from 'react-hot-toast';
 import type { CreateUserPayload } from '@/services/userService';
 import { handleApiError } from '@/services/handleApiError';
 
-import FormInput from '@/share/FormInput';
+import FormInput from '@/shared/FormInput';
 
-import { getUserValidationSchema } from './UserForm.validation';
+import { getUserValidationSchema } from '@/validations/UserForm.validation';
 import {
   FormContainer,
   FormActions,

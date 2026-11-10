@@ -6,8 +6,9 @@ import {
 } from 'react';
 
 import { useTranslation } from 'react-i18next';
+import languageStorage, { type Language } from '@/storage/languageStorage';
 
-export type Language = 'fa' | 'en';
+export type { Language } from '@/storage/languageStorage';
 
 interface LanguageContextType {
   language: Language;
@@ -45,7 +46,7 @@ const LanguageProvider = ({ children }: LanguageProviderProps) => {
       language === 'fa'
         ? "'Vazirmatn', sans-serif"
         : "'Inter', sans-serif";
-    localStorage.setItem('language', language);
+    languageStorage.setLanguage(language);
   }, [language, direction]);
 
   const toggleLanguage = () => {

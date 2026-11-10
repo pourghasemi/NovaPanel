@@ -7,7 +7,7 @@ export interface User {
     firstname: string;
     lastname: string;
   };
-  address: {
+  address?: {
     city: string;
     street: string;
     number: number;

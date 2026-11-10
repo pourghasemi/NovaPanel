@@ -1,8 +1,9 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
-import type { Product } from '@/type/product';
-import type { DataTableColumn } from '@/share/DataTable';
+import type { Product } from '@/types/product';
+import type { DataTableColumn } from '@/shared/DataTable';
 
 const ProductImage = styled.img`
   width: 44px;
@@ -28,7 +29,18 @@ const Rating = styled.span`
 `;
 
 const useProductColumns = (): DataTableColumn<Product>[] => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.resolvedLanguage ?? i18n.language;
+  const isPersian = locale.startsWith('fa');
+  const priceFormatter = useMemo(
+    () => new Intl.NumberFormat(
+      locale,
+      isPersian
+        ? { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+        : { style: 'currency', currency: 'USD' },
+    ),
+    [locale, isPersian],
+  );
 
   return [
     {
@@ -55,7 +67,10 @@ const useProductColumns = (): DataTableColumn<Product>[] => {
       key: 'price',
       header: t('products.price'),
       render: (product) => (
-        <Price>${product.price.toFixed(2)}</Price>
+        <Price>
+          {priceFormatter.format(product.price)}
+          {isPersian ? ' تومان' : ''}
+        </Price>
       ),
     },
     {
